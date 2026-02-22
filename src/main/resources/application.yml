@@ -1,0 +1,11 @@
+spring:
+  data:
+    mongodb:
+      auto-index-creation: true
+      # lascia pure vuoto/non usato; useremo config custom
+      uri: ""
+
+marketlens:
+  mongodb:
+    fast-uri: mongodb://10.1.1.65:27017,10.1.1.66:27017,10.1.1.67:27017/marketlens?replicaSet=lsmdb&readPreference=secondaryPreferred&maxStalenessSeconds=90&w=1&wtimeoutMS=2000&journal=true&retryWrites=true
+    strong-uri: mongodb://10.1.1.65:27017,10.1.1.66:27017,10.1.1.67:27017/marketlens?replicaSet=lsmdb&readPreference=primary&w=majority&wtimeoutMS=10000&journal=true&retryWrites=true
