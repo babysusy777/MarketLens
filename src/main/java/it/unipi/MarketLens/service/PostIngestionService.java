@@ -2,6 +2,7 @@ package it.unipi.MarketLens.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mongodb.DuplicateKeyException;
 import it.unipi.MarketLens.model.Brand;
 import it.unipi.MarketLens.model.Industry;
 import it.unipi.MarketLens.model.Post;
@@ -430,7 +431,7 @@ public class PostIngestionService {
             try { ind = Industry.valueOf(post.getIndustry()); } catch (Exception ignored) {}
         }
 
-        Optional<Brand> existing = brandRepository.findByBrandName(brandName);
+        Optional<Brand> existing = brandRepository.findByBrandNameIgnoreCase(brandName);
         if (existing.isPresent()) {
             Brand b = existing.get();
             if (b.getIndustry() == null && ind != null) {
@@ -446,7 +447,7 @@ public class PostIngestionService {
 
         try {
             brandRepository.save(b);
-        } catch (Exception ignored) {
+        } catch (DuplicateKeyException e) {
             // se metti indice unique su brandName, qui può capitare DuplicateKey in concorrenza: ok
         }
     }

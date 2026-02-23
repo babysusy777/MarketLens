@@ -2,8 +2,6 @@ spring:
   data:
     mongodb:
       auto-index-creation: true
-      # lascia pure vuoto/non usato; useremo config custom
-      uri: ""
 
 marketlens:
   mongodb:

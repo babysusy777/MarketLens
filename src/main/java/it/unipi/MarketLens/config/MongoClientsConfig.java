@@ -16,6 +16,8 @@ import org.springframework.data.mongodb.MongoDatabaseFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoClientDatabaseFactory;
 import org.springframework.data.mongodb.core.convert.MongoConverter;
+import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
+import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 
 @Configuration
@@ -71,13 +73,15 @@ public class MongoClientsConfig {
     }
 
     @Bean(name = "fastMongoTemplate")
-    public MongoTemplate fastMongoTemplate(@Qualifier("fastMongoDbFactory") MongoDatabaseFactory factory) {
-        return new MongoTemplate(factory);
+    public MongoTemplate fastMongoTemplate(@Qualifier("fastMongoDbFactory") MongoDatabaseFactory factory,
+                                           MongoConverter converter) {
+        return new MongoTemplate(factory, converter);
     }
 
     @Bean(name = "strongMongoTemplate")
-    public MongoTemplate strongMongoTemplate(@Qualifier("strongMongoDbFactory") MongoDatabaseFactory factory) {
-        return new MongoTemplate(factory);
+    public MongoTemplate strongMongoTemplate(@Qualifier("strongMongoDbFactory") MongoDatabaseFactory factory,
+                                             MongoConverter converter) {
+        return new MongoTemplate(factory, converter);
     }
 
     @Bean
@@ -86,5 +90,7 @@ public class MongoClientsConfig {
             MongoConverter mongoConverter) {
         return new GridFsTemplate(dbFactory, mongoConverter);
     }
+
+
 
 }
