@@ -14,7 +14,6 @@ import java.util.List;
 @Document(collection = "posts")
 @CompoundIndexes({
         @CompoundIndex(name = "brand_date_idx", def = "{'user_posted': 1, 'date_posted': -1}"),
-        @CompoundIndex(name = "industry_idx", def = "{'industry': 1}")
 })
 public class Post {
 
@@ -26,7 +25,6 @@ public class Post {
     private String postId;
 
     @Field("user_posted")
-    @Indexed
     private String userPosted;
 
     @Field("description")

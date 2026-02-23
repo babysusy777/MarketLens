@@ -23,7 +23,7 @@ public class Brand {
 
     private String username;
     
-    @Indexed(name = "brand_industry_idx")
+
     private Industry industry;
 
     private List<String> monitoringKeywords = new ArrayList<>();
