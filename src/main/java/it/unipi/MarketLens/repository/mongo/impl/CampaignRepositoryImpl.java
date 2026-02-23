@@ -33,19 +33,11 @@ public class CampaignRepositoryImpl implements CampaignRepositoryCustom {
         this.strongMongoTemplate = strongMongoTemplate;
     }
 
-    /**
-     * IMPORTANT:
-     * Per "create/refresh campaign" vogliamo determinismo -> STRONG read.
-     * (primary + readConcern majority)
-     */
+
     private MongoTemplate readMongo() {
         return strongMongoTemplate;
     }
 
-    @SuppressWarnings("unused")
-    private MongoTemplate fastReadMongo() {
-        return fastMongoTemplate;
-    }
 
     @Override
     public CampaignResponse analyzeCampaign(Campaign config) {

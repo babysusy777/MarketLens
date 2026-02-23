@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
                         //PipelineRunLogRepository.class,
                         //UserRepository.class,
                         //BrandRepository.class,
-                        //CampaignRepository.class,
+                        CampaignRepository.class,
                         TrendAnalyticsRepository.class
 
                 }

@@ -1,6 +1,7 @@
 package it.unipi.MarketLens.repository.mongo;
 
 import it.unipi.MarketLens.model.Post;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;

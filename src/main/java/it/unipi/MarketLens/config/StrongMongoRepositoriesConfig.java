@@ -17,7 +17,7 @@ import org.springframework.context.annotation.FilterType;
                         BrandRepository.class,
                         PipelineConfigRepository.class,
                         IngestionCursorStateRepository.class,
-                        CampaignRepository.class,
+                        //CampaignRepository.class,
                         PipelineRunLogRepository.class
                 }
         )
